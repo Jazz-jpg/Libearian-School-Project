@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>main.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutterloginproject/favorites.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutterloginproject/providers/student_books.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutterloginproject/rentals.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutterloginproject/screens/book_details_screen.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutterloginproject/user.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'auth.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'root.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:provider/provider.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutterloginproject/Profile_page.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'providers/books.dart'</span><span class="s2">;</span>
+
+
+
+<span class="s2">void </span><span class="s0">main() {</span>
+
+  <span class="s0">runApp(</span><span class="s2">new </span><span class="s0">MyApp())</span><span class="s2">;</span>
+
+
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">MyApp </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+
+    <span class="s2">return </span><span class="s0">MultiProvider(</span>
+      <span class="s0">providers: [</span>
+        <span class="s0">ChangeNotifierProvider.value(</span>
+          <span class="s0">value: Books()</span><span class="s2">,</span>
+        <span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">ChangeNotifierProvider.value(</span>
+          <span class="s0">value: StudentBooks()</span><span class="s2">,</span>
+        <span class="s0">)</span>
+      <span class="s0">]</span><span class="s2">,</span>
+      <span class="s0">child: StreamProvider&lt;User&gt;.value(</span>
+        <span class="s0">value: Auth().user</span><span class="s2">,</span>
+        <span class="s0">child: </span><span class="s2">new </span><span class="s0">MaterialApp(</span>
+            <span class="s0">debugShowCheckedModeBanner: </span><span class="s2">false,</span>
+          <span class="s0">title: </span><span class="s1">'Loogin page'</span><span class="s2">,</span>
+          <span class="s0">routes: {</span>
+              <span class="s1">'/Profile' </span><span class="s0">: (context) =&gt; Profile()</span><span class="s2">,</span>
+            <span class="s1">'/Rentals' </span><span class="s0">: (context) =&gt; Rentals()</span><span class="s2">,</span>
+            <span class="s1">'/Favorites' </span><span class="s0">: (context) =&gt; Favorites()</span><span class="s2">,</span>
+            <span class="s0">BookDetailScreen.routeName: (ctx) =&gt; BookDetailScreen()</span>
+          <span class="s0">}</span><span class="s2">,</span>
+          <span class="s0">theme: </span><span class="s2">new </span><span class="s0">ThemeData(</span>
+
+          <span class="s0">)</span><span class="s2">,</span>
+          <span class="s0">home: </span><span class="s2">new </span><span class="s0">RootPage(auth: </span><span class="s2">new </span><span class="s0">Auth())</span>
+        <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+</pre>
+</body>
+</html>

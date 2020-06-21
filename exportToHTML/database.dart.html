@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>database.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+database.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:cloud_firestore/cloud_firestore.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutterloginproject/user.dart'</span><span class="s2">;</span>
+
+
+<span class="s2">class </span><span class="s0">Database {</span>
+  <span class="s2">final </span><span class="s0">String uid</span><span class="s2">;</span>
+  <span class="s0">Database({ </span><span class="s2">this</span><span class="s0">.uid })</span><span class="s2">;</span>
+
+
+  <span class="s2">final </span><span class="s0">CollectionReference bookCollection = Firestore.instance.collection(</span><span class="s1">'bookData'</span><span class="s0">)</span><span class="s2">;</span>
+
+  <span class="s0">Future updateUserData(String name</span><span class="s2">, </span><span class="s0">String email</span><span class="s2">, </span><span class="s0">String phone</span><span class="s2">, </span><span class="s0">String pic</span><span class="s2">, </span><span class="s0">bool isAdmin) async {</span>
+    <span class="s2">return </span><span class="s0">await bookCollection.document(uid).setData({</span>
+      <span class="s1">'name' </span><span class="s0">: name</span><span class="s2">,</span>
+      <span class="s1">'email' </span><span class="s0">: email</span><span class="s2">,</span>
+      <span class="s1">'phone' </span><span class="s0">: phone</span><span class="s2">,</span>
+      <span class="s1">'pic' </span><span class="s0">: pic</span><span class="s2">,</span>
+      <span class="s1">'isAdmin' </span><span class="s0">: isAdmin</span><span class="s2">,</span>
+    <span class="s0">})</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+
+  <span class="s0">Future updateLibrary (String book) async {</span>
+    <span class="s0">DocumentReference docRef = Firestore.instance.collection(</span><span class="s1">'library'</span><span class="s0">).document(</span><span class="s1">'books'</span><span class="s0">)</span><span class="s2">;</span>
+    <span class="s0">DocumentSnapshot doc = await docRef.get()</span><span class="s2">;</span>
+    <span class="s0">List purchasedBooks = doc.data[</span><span class="s1">'Books'</span><span class="s0">]</span><span class="s2">;</span>
+    <span class="s2">if </span><span class="s0">(purchasedBooks.contains(book) == </span><span class="s2">true</span><span class="s0">) {</span>
+      <span class="s0">docRef.updateData({</span><span class="s1">'Books'</span><span class="s0">: FieldValue.arrayRemove([book])})</span><span class="s2">;</span>
+    <span class="s0">} </span><span class="s2">else </span><span class="s0">{</span>
+      <span class="s0">docRef.updateData({</span><span class="s1">'Books'</span><span class="s0">: FieldValue.arrayUnion([book])})</span><span class="s2">;</span>
+    <span class="s0">}</span>
+  <span class="s0">}</span>
+
+  <span class="s0">UserData _userSnapshot(DocumentSnapshot snapshot) {</span>
+    <span class="s2">return </span><span class="s0">UserData(</span>
+      <span class="s0">uid: uid</span><span class="s2">,</span>
+      <span class="s0">name: snapshot.data[</span><span class="s1">'name'</span><span class="s0">]</span><span class="s2">,</span>
+      <span class="s0">email: snapshot.data[</span><span class="s1">'email'</span><span class="s0">]</span><span class="s2">,</span>
+      <span class="s0">phone: snapshot.data[</span><span class="s1">'phone'</span><span class="s0">]</span><span class="s2">,</span>
+      <span class="s0">pic: snapshot.data[</span><span class="s1">'pic'</span><span class="s0">]</span><span class="s2">,</span>
+        <span class="s0">isAdmin: snapshot.data[</span><span class="s1">'isAdmin'</span><span class="s0">]</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+  <span class="s2">final </span><span class="s0">CollectionReference pages = Firestore.instance.collection(</span><span class="s1">'purchasedBooks'</span><span class="s0">)</span><span class="s2">;</span>
+
+  <span class="s0">Future updateBookData(String id</span><span class="s2">, </span><span class="s0">String title</span><span class="s2">, </span><span class="s0">String author</span><span class="s2">, </span><span class="s0">String description</span><span class="s2">, </span><span class="s0">double price</span><span class="s2">, </span><span class="s0">String imageUrl) async {</span>
+    <span class="s2">return </span><span class="s0">await pages.document(id).setData({</span>
+      <span class="s1">'id' </span><span class="s0">: id</span><span class="s2">,</span>
+      <span class="s1">'title' </span><span class="s0">: title</span><span class="s2">,</span>
+      <span class="s1">'author' </span><span class="s0">: author</span><span class="s2">,</span>
+      <span class="s1">'description' </span><span class="s0">: description</span><span class="s2">,</span>
+      <span class="s1">'price' </span><span class="s0">: price</span><span class="s2">,</span>
+      <span class="s1">'imageUrl' </span><span class="s0">: imageUrl</span><span class="s2">,</span>
+    <span class="s0">})</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+  <span class="s0">Stream&lt;UserData&gt; get userData {</span>
+    <span class="s2">return </span><span class="s0">bookCollection.document(uid).snapshots().map(_userSnapshot)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+
+
+
+<span class="s0">}</span>
+
+</pre>
+</body>
+</html>

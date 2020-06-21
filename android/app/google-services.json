@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "131128996234",
+    "firebase_url": "https://libearian-e8a24.firebaseio.com",
+    "project_id": "libearian-e8a24",
+    "storage_bucket": "libearian-e8a24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131128996234:android:17905446ab9a099ec61873",
+        "android_client_info": {
+          "package_name": "com.example.flutterloginproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131128996234-5m48hr8t4dm8f4u6esk4g6r9s1fqc3nq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3uaTcD9DGw9WF_NPbPm9f4-H_UgZs528"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131128996234-5m48hr8t4dm8f4u6esk4g6r9s1fqc3nq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
