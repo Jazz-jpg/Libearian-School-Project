@@ -8,7 +8,7 @@ A Librarian style web app for ordering and returning books to a local library
 
 ## Problem Statement
 
-In todays modern Era there is a constant push towards technology and with technology we are getting a lot of new ways to take advantage of E-commerce. This application looks to take the traditional E-commerce spin and port it to a fictional phone-application that a local library system might use. to keep track of their users as well as the books that are being checked out.
+In todays modern Era there is a constant push towards technology and with technology we are getting a lot of new ways to take advantage of E-commerce. This application looks to take the traditional E-commerce spin and port it to a fictional phone-application that a local library system might use. to keep track of their users as well as the books that are being checked out. We completed this in the course of an 8 week semester. in addition to following the Oakland University Custom Theme we had chosen.
 
 ## Objectives
 
