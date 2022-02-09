@@ -22,12 +22,11 @@ In todays modern Era there is a constant push towards technology and with techno
 * Create a mobile platform where UX is a focus.
 
 ## Team Members
-
-* Sean Radatz ([jmalek41](https://github.com/jmalek41))
-* Christopher Ivory ([yonimn2000](https://github.com/yonimn2000))
-* Jasmin Medic ([Jazz-jpg](https://github.com/Jazz-jpg))
-* Ellis Mouton
-* Edward Hasa
+* Scrum Master - Jasmin Medic ([Jazz-jpg](https://github.com/Jazz-jpg))
+* Product Owner -Sean Radatz ([SRadatz](https://github.com/SRadatz))
+* Developer - Christopher Ivory
+* Developer - Ellis Mouton
+* Developer - Edward Hasa
 
 
 ## Who We Are
