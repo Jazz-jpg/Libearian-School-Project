@@ -45,6 +45,7 @@ We accomplished this mobile app through the use of Googles Book API and Flutter.
 * The Login system is proprietary, basic and rudementary. It is not something that we sourced from anywhere. Nor is it a very complex authentication system.
 * We implemented Googles book API to load in books for our users.
 * We designed a good user experience from scratch to allow easy interactions with our Application
+* Firebase database storage was used to store users, permissions, and books that were ordered from the API.
 
 ## Why We Did It
 
